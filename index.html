@@ -20,13 +20,17 @@
       margin-bottom: 20px;
     }
 
-    .tategaki {
+    .scroll-container {
       writing-mode: vertical-rl;
       text-orientation: mixed;
       font-size: 1.5em;
       line-height: 2;
-      white-space: nowrap; /* 改行禁止 */
-      text-align: center;
+      white-space: nowrap;
+      overflow-y: auto;
+      height: 80vh;
+      width: auto;
+      padding: 0 10px;
+      border: 1px solid #ccc;
     }
 
     ruby {
@@ -40,8 +44,8 @@
 </head>
 <body>
   <h1>one reading my TANKA</h1>
-  <div class="tategaki">
-    <ruby>五年後<rt>ごねんご</rt></ruby>に<ruby>血<rt>ち</rt></ruby>がだくだくっと出たつもり<ruby>充電<rt>じゅうでん</rt></ruby>できる豚を飼うとは
+  <div class="scroll-container">
+    <ruby>五年後<rt>ごねんご</rt></ruby>に<ruby>血<rt>ち</rt></ruby>がだくだくっと出たつもり　<ruby>充電<rt>じゅうでん</rt></ruby>できる豚を飼うとは
   </div>
 </body>
 </html>
