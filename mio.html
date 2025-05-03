@@ -21,7 +21,9 @@
     .title {
       font-size: 4em;
       text-align: center;
+      margin-top: 40px;
       margin-bottom: 60px;
+      color: #a00;
     }
     .tanka {
       writing-mode: vertical-rl;
@@ -51,7 +53,7 @@
       margin-bottom: 100px;
     }
     .next-link a {
-      font-size: 3em;
+      font-size: 5em;
       text-decoration: none;
       color: #a00;
     }
@@ -59,7 +61,7 @@
 </head>
 <body>
   <div class="container">
-    <div class="title">mio</div>
+    <div class="title" id="top">mio</div>
     <div class="tanka" id="tanka"></div>
   </div>
 
@@ -78,11 +80,7 @@
       `たぶんしない　<ruby><rb>香</rb><rt>かお</rt></ruby>らせ見つめくる<ruby><rb>君</rb><rt>きみ</rt></ruby>に手をのべる。「<ruby><rb>沼</rb><rt>ぬま</rt></ruby>、<ruby><rb>抜</rb><rt>ぬ</rt></ruby>け出るつもり」`,
       `「何してる？」「家でしょぼしょぼ」「目薬を」　<ruby><rb>君</rb><rt>きみ</rt></ruby>の<ruby><rb>踏</rb><rt>ふ</rt></ruby>んだきゅぽってなに？`,
       `<ruby><rb>初香</rb><rt>しょか</rt></ruby>から手　持ち返ってきた<ruby><rb>勾玉</rb><rt>まがたま</rt></ruby>よ　名を知るのみで　<ruby><rb>弥生</rb><rt>やよい</rt></ruby>つづける`,
-      `<ruby><rb>君</rb><rt>きみ</rt></ruby>らしき電話の主は楽しげで　「犯人はこの中にいますか？」`,
-      `「<ruby><rb>嬉</rb><rt>うれ</rt></ruby>しい」の声の答えをあわせたい　骨なぞりたい、くぼませたい`,
-      `<ruby><rb>骨</rb><rt>ほね</rt></ruby>やわむペースはきっと違います　ひとりのときは<ruby><rb>困</rb><rt>こま</rt></ruby>ってください`,
-      `<ruby><rb>半歩</rb><rt>はんぽ</rt></ruby>ずつ空が下がって「雨はどう？」<ruby><rb>呪</rb><rt>のろ</rt></ruby>わす時間<ruby><rb>余</rb><rt>あま</rt></ruby>ってますか`,
-      `ラグあって　<ruby><rb>相</rb><rt>あい</rt></ruby>づつから　<ruby><rb>肺</rb><rt>はい</rt></ruby>、<ruby><rb>吐</rb><rt>は</rt></ruby>き忘れ　あの日<ruby><rb>混</rb><rt>ま</rt></ruby>ざった　<ruby><rb>何滴</rb><rt>なんてき</rt></ruby>かが`
+      `<ruby><rb>君</rb><rt>きみ</rt></ruby>らしき電話の主は楽しげで　「犯人はこの中にいますか？」`
     ];
 
     const tankaElement = document.getElementById("tanka");
