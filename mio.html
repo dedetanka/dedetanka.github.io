@@ -9,7 +9,7 @@
       margin: 0;
       padding: 0;
       font-family: 'Shippori Mincho B1', serif;
-      background-color: #fff0f0; /* 薄い赤 */
+      background-color: #fff0f0;
       overflow-y: auto;
     }
     .container {
@@ -46,22 +46,27 @@
       line-height: 1;
       white-space: nowrap;
     }
+    .next-link {
+      text-align: center;
+      margin-bottom: 100px;
+    }
+    .next-link a {
+      font-size: 2em;
+      text-decoration: none;
+      color: #a00;
+    }
   </style>
 </head>
-<div style="text-align: center; margin-bottom: 100px;">
-  <a href="#" onclick="scrollToTopAndReload()" style="font-size: 2em; text-decoration: none; color: #a00;">next</a>
-</div>
-<script>
-  function scrollToTopAndReload() {
-    window.scrollTo({ top: 0, behavior: 'auto' });
-    location.reload();
-  }
-</script>
 <body>
   <div class="container">
     <div class="title">mio</div>
     <div class="tanka" id="tanka"></div>
   </div>
+
+  <div class="next-link">
+    <a href="#" onclick="scrollToTopAndReload()">next</a>
+  </div>
+
   <script>
     const tankas = [
       `<ruby><rb>吾</rb><rt>われ</rt></ruby>ひとりあなたのことをおっちゃんと<ruby><rb>呼</rb><rt>よ</rt></ruby>ぶことになり　話が変わる`,
@@ -79,15 +84,22 @@
       `<ruby><rb>半歩</rb><rt>はんぽ</rt></ruby>ずつ空が下がって「雨はどう？」<ruby><rb>呪</rb><rt>のろ</rt></ruby>わす時間<ruby><rb>余</rb><rt>あま</rt></ruby>ってますか`,
       `ラグあって　<ruby><rb>相</rb><rt>あい</rt></ruby>づつから　<ruby><rb>肺</rb><rt>はい</rt></ruby>、<ruby><rb>吐</rb><rt>は</rt></ruby>き忘れ　あの日<ruby><rb>混</rb><rt>ま</rt></ruby>ざった　<ruby><rb>何滴</rb><rt>なんてき</rt></ruby>かが`
     ];
+
     const tankaElement = document.getElementById("tanka");
     const randomIndex = Math.floor(Math.random() * tankas.length);
     tankaElement.innerHTML = tankas[randomIndex];
+
     setTimeout(() => {
       tankaElement.style.opacity = "0.5";
     }, 10000);
     setTimeout(() => {
       tankaElement.style.opacity = "0.1";
     }, 20000);
+
+    function scrollToTopAndReload() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+      location.reload();
+    }
   </script>
 </body>
 </html>
