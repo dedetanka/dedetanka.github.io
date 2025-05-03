@@ -35,7 +35,8 @@
       white-space: nowrap;
       text-align: center;
       letter-spacing: 0.1em;
-      margin-bottom: 300px;
+      margin-bottom: 600px; /* 下のスペース拡大 */
+      transition: opacity 2s ease; /* スムーズなフェード */
     }
 
     ruby {
@@ -107,8 +108,18 @@
       "あなたの目　あなたの加減の「おっちゃん」を　タイムリープ　<ruby>幸<rt>さき</rt></ruby>の先のさ"
     ];
 
+    const tankaElement = document.getElementById('tanka');
     const randomIndex = Math.floor(Math.random() * tankas.length);
-    document.getElementById('tanka').innerHTML = tankas[randomIndex];
+    tankaElement.innerHTML = tankas[randomIndex];
+
+    // 時間経過で透明度を変化
+    setTimeout(() => {
+      tankaElement.style.opacity = "0.5";
+    }, 10000); // 10秒後
+
+    setTimeout(() => {
+      tankaElement.style.opacity = "0.1";
+    }, 20000); // 20秒後
   </script>
 </body>
 </html>
