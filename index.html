@@ -33,7 +33,7 @@
       line-height: 2.5;
       white-space: nowrap;
       text-align: center;
-      letter-spacing: 0.1em; /* ← ここが文字間隔10%拡大 */
+      letter-spacing: 0.1em;
     }
 
     ruby {
@@ -48,9 +48,31 @@
 <body>
   <div class="container">
     <div class="title">one reading my TANKA</div>
-    <div class="tanka">
-      <ruby>五年後<rt>ごねんご</rt></ruby>に<ruby>血<rt>ち</rt></ruby>がだくだくっと出たつもり<ruby>充電<rt>じゅうでん</rt></ruby>できる豚を飼うとは
-    </div>
+    <div class="tanka" id="tanka"></div>
   </div>
+
+  <script>
+    const tankas = [
+      '五年後に血がだくだくっと出たつもり充電できる豚を飼うとは',
+      '吾ひとりあなたのことをおっちゃんと呼ぶことになり　話が変わる',
+      '声さらう　おっちゃん、「お」にアクセント　言い直されて<ruby>幸<rt>さき</rt></ruby>くり返す',
+      '外側に箸とグラスを置いたまま　皮膚から聞こえる擦過の音が',
+      'アスパラの頭を左にする君の　その整えがその整いか',
+      '遠赤外の距離から瞬かず君「内臓ひきずり出しますよ」',
+      'その代わり幻をみせてあげますね、そう触れてくる脳のしわまで',
+      'たぶんしない　香らせ見つめくる君に手をのべる。「沼抜け出るつもり」',
+      '「何してる？」「家でしょぼしょぼ」「目薬を」　君の踏んだきゅぽってなに？',
+      '初香から手　持ち返ってきた勾玉よ　名を知るのみで　弥生つづける',
+      '君らしき電話の主は楽しげで　「犯人はこの中にいますか？」',
+      '「嬉しい」の声の答えをあわせたい　骨なぞりたい、くぼませたい',
+      '骨やわむペースはきっと違います　ひとりのときは困ってください',
+      '半歩ずつ空が下がって「雨はどう？」呪わす時間余ってますか',
+      'ラグあって　相づつから　肺、吐き忘れ　あの日混ざった　何滴かが',
+      'とげささる　かつての君を構成していた液で育ったとげが'
+    ];
+
+    const randomIndex = Math.floor(Math.random() * tankas.length);
+    document.getElementById('tanka').innerHTML = tankas[randomIndex];
+  </script>
 </body>
 </html>
