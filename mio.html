@@ -107,18 +107,21 @@
     }
 
   function speakTanka() {
-    // <ruby>の中にふりがな（rt）がある場合はそれだけを抽出
-    const rubies = tankaElement.querySelectorAll("ruby");
-    rubies.forEach(ruby => {
+    const temp = document.createElement("div");
+    temp.innerHTML = tankaElement.innerHTML;
+
+    // rubyからふりがな（rt）のみを抽出
+    temp.querySelectorAll("ruby").forEach(ruby => {
       const rt = ruby.querySelector("rt");
       if (rt) {
-        ruby.replaceWith(document.createTextNode(rt.textContent));
+        ruby.replaceWith(rt.textContent);
       } else {
-        ruby.replaceWith(document.createTextNode(ruby.textContent));
+        ruby.replaceWith(ruby.textContent);
       }
     });
 
-    const text = tankaElement.innerText.replace(/\s+/g, ' ').trim();
+    const text = temp.textContent.replace(/\s+/g, ' ').trim();
+
     const utter = new SpeechSynthesisUtterance(text);
     utter.lang = 'ja-JP';
     speechSynthesis.cancel();
