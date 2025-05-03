@@ -125,6 +125,7 @@
 
     const utter = new SpeechSynthesisUtterance(text);
     utter.lang = 'ja-JP';
+    utter.rate = 0.6; // ← ここで速度調整（0.1〜10.0）
     speechSynthesis.cancel();
     speechSynthesis.speak(utter);
   }
