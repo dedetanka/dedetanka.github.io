@@ -34,7 +34,7 @@
       white-space: nowrap;
       text-align: center;
       letter-spacing: 0.1em;
-      margin-bottom: 150px;
+      margin-bottom: 120px;
       transition: opacity 2s ease;
     }
     ruby {
@@ -66,7 +66,7 @@
   </div>
 
   <div class="next-link">
-    <a href="#" onclick="scrollToTopAndReload()">next-></a>
+    <a href="#" onclick="scrollToTopAndReload()">next→</a>
   </div>
 
   <script>
@@ -95,7 +95,8 @@
     }, 20000);
 
     function scrollToTopAndReload() {
-      window.scrollTo({ top: 0, behavior: 'auto' });
+      document.body.scrollTop = 0;
+      document.documentElement.scrollTop = 0;
       location.reload();
     }
   </script>
