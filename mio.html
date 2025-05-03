@@ -124,7 +124,7 @@
     let text = temp.textContent.replace(/\s+/g, ' ').trim();
     
     // スペースを休符に変える（句点にすることで間ができる）
-    text = text.replace(/ /g, '、'); // ←「、」の方が自然な間になります
+    text = text.replace(/ /g, '……'); // ←「、」の方が自然な間になります
 
     const utter = new SpeechSynthesisUtterance(text);
     utter.lang = 'ja-JP';
