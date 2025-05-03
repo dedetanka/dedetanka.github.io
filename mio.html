@@ -83,9 +83,27 @@
       `<ruby><rb>君</rb><rt>きみ</rt></ruby>らしき電話の主は楽しげで　「犯人はこの中にいますか？」`
     ];
 
+    function shuffle(array) {
+      for (let i = array.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [array[i], array[j]] = [array[j], array[i]];
+      }
+      return array;
+    }
+
+    let order = JSON.parse(localStorage.getItem("tankaOrder"));
+    let index = parseInt(localStorage.getItem("tankaIndex") || "0");
+
+    if (!order || index >= tankas.length) {
+      order = shuffle([...Array(tankas.length).keys()]);
+      index = 0;
+    }
+
     const tankaElement = document.getElementById("tanka");
-    const randomIndex = Math.floor(Math.random() * tankas.length);
-    tankaElement.innerHTML = tankas[randomIndex];
+    tankaElement.innerHTML = tankas[order[index]];
+
+    localStorage.setItem("tankaOrder", JSON.stringify(order));
+    localStorage.setItem("tankaIndex", (index + 1).toString());
 
     setTimeout(() => {
       tankaElement.style.opacity = "0.5";
