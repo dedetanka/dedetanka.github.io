@@ -49,12 +49,21 @@
     }
     .next-link {
       text-align: center;
-      margin-bottom: 200px;
+      margin-bottom: 40px;
     }
     .next-link a {
       font-size: 3.8em;
       text-decoration: none;
       color: #a00;
+    }
+    .read-button {
+      font-size: 1.6em;
+      padding: 0.3em 1em;
+      background: #a00;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
     }
   </style>
 </head>
@@ -62,6 +71,7 @@
   <div class="container">
     <div class="title" id="top">mio</div>
     <div class="tanka" id="tanka"></div>
+    <button class="read-button" onclick="speakTanka()">読み上げ</button>
   </div>
 
   <div class="next-link">
@@ -94,6 +104,14 @@
       document.body.scrollTop = 0;
       document.documentElement.scrollTop = 0;
       location.reload();
+    }
+
+    function speakTanka() {
+      const text = tankaElement.innerText.replace(/\s+/g, ' ');
+      const utter = new SpeechSynthesisUtterance(text);
+      utter.lang = 'ja-JP';
+      speechSynthesis.cancel(); // 既存の読み上げをキャンセル
+      speechSynthesis.speak(utter);
     }
   </script>
 </body>
