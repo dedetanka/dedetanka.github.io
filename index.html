@@ -6,31 +6,24 @@
   <style>
     body {
       margin: 0;
-      height: 100vh;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
+      padding: 40px;
       font-family: "Yu Mincho", "Hiragino Mincho Pro", serif;
       background-color: #ffffff;
+      writing-mode: vertical-rl;
+      text-orientation: mixed;
+      white-space: nowrap;
     }
 
     h1 {
+      writing-mode: horizontal-tb;
       font-size: 2em;
-      margin-bottom: 20px;
+      text-align: center;
+      margin-bottom: 40px;
     }
 
-    .scroll-container {
-      writing-mode: vertical-rl;
-      text-orientation: mixed;
-      font-size: 1.5em;
-      line-height: 2;
-      white-space: nowrap;
-      overflow-y: auto;
-      height: 80vh;
-      width: auto;
-      padding: 0 10px;
-      border: 1px solid #ccc;
+    .tanka {
+      font-size: 3em;       /* ← 短歌の文字サイズを大きく */
+      line-height: 2.5;
     }
 
     ruby {
@@ -38,14 +31,14 @@
     }
 
     rt {
-      font-size: 0.5em;
+      font-size: 0.4em;     /* ルビは小さめに調整 */
     }
   </style>
 </head>
 <body>
   <h1>one reading my TANKA</h1>
-  <div class="scroll-container">
-    <ruby>五年後<rt>ごねんご</rt></ruby>に<ruby>血<rt>ち</rt></ruby>がだくだくっと出たつもり　<ruby>充電<rt>じゅうでん</rt></ruby>できる豚を飼うとは
+  <div class="tanka">
+    <ruby>五年後<rt>ごねんご</rt></ruby>に<ruby>血<rt>ち</rt></ruby>がだくだくっと出たつもり<ruby>充電<rt>じゅうでん</rt></ruby>できる豚を飼うとは
   </div>
 </body>
 </html>
