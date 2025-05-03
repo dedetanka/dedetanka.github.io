@@ -4,22 +4,25 @@
   <meta charset="UTF-8">
   <title>one reading my TANKA</title>
   <style>
-    body {
+    html, body {
       margin: 0;
-      padding: 40px;
+      padding: 0;
       font-family: "Yu Mincho", "Hiragino Mincho Pro", serif;
       background-color: #ffffff;
+    }
+
+    .container {
+      padding: 40px;
       display: flex;
       flex-direction: column;
       align-items: center;
-      justify-content: center;
-      height: 100vh;
     }
 
     .title {
       font-size: 2em;
       text-align: center;
-      margin-bottom: 40px;
+      margin-bottom: 20px;
+      writing-mode: horizontal-tb;
     }
 
     .tanka {
@@ -36,20 +39,22 @@
     }
 
     rt {
-      font-size: 0.5em; /* 通常のふりがなサイズ */
+      font-size: 0.5em;
     }
   </style>
 </head>
 <body>
-  <div class="title">one reading my TANKA</div>
-  <div class="tanka">
-    <ruby>五年後<rt>ごねんご</rt></ruby>に
-    <ruby>血<rt>ち</rt></ruby>が
-    だくだくっと
-    出たつもり
-    <ruby>充電<rt>じゅうでん</rt></ruby>できる
-    豚を
-    飼うとは
+  <div class="container">
+    <div class="title">one reading my TANKA</div>
+    <div class="tanka">
+      <ruby>五年後<rt>ごねんご</rt></ruby>に
+      <ruby>血<rt>ち</rt></ruby>が
+      だくだくっと
+      出たつもり
+      <ruby>充電<rt>じゅうでん</rt></ruby>できる
+      豚を
+      飼うとは
+    </div>
   </div>
 </body>
 </html>
