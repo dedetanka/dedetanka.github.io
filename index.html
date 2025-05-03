@@ -1,27 +1,47 @@
 <!DOCTYPE html>
-<html lang="ja">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>扉ページ</title>
+  <title>one reading my TANKA</title>
   <style>
     body {
       margin: 0;
       height: 100vh;
       display: flex;
+      flex-direction: column;
       align-items: center;
       justify-content: center;
       font-family: 'Helvetica Neue', sans-serif;
       background-color: #ffffff;
       color: #000000;
     }
+
     h1 {
       font-size: 2.5em;
       font-weight: normal;
       text-align: center;
     }
+
+    #image {
+      opacity: 0;
+      transition: opacity 1.5s ease-in-out;
+      max-width: 80%;
+      margin-top: 20px;
+    }
+
+    .visible {
+      opacity: 1;
+    }
   </style>
 </head>
 <body>
   <h1>one reading my TANKA</h1>
+  <img id="image" src="imagetest.png" alt="TANKA Image">
+
+  <script>
+    setTimeout(() => {
+      document.getElementById('image').classList.add('visible');
+    }, 5000); // 5秒後に画像を表示
+  </script>
 </body>
 </html>
