@@ -1,1 +1,90 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>one reading my TANKA - 50 Tanka</title>
+  <link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho+B1&display=swap" rel="stylesheet">
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Shippori Mincho B1', serif;
+      background-color: #ffffff;
+      overflow-y: auto;
+    }
+    .container {
+      padding: 40px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .title {
+      font-size: 2em;
+      text-align: center;
+      margin-bottom: 60px;
+    }
+    .tanka {
+      writing-mode: vertical-rl;
+      text-orientation: mixed;
+      font-size: 3.2em;
+      line-height: 2.1;
+      max-width: 90vw;
+      white-space: nowrap;
+      text-align: center;
+      letter-spacing: 0.1em;
+      margin-bottom: 600px;
+      transition: opacity 2s ease;
+    }
+    ruby {
+      ruby-position: over;
+      line-height: 1;
+      display: inline-block;
+      white-space: nowrap;
+    }
+    rb {
+      display: inline;
+    }
+    rt {
+      font-size: 0.7em;
+      line-height: 1;
+      white-space: nowrap;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="title">one reading my TANKA</div>
+    <div class="tanka" id="tanka"></div>
+  </div>
+  <script>
+    const tankas = [
+      "五年後に血がだくだくっと出たつもり　充電できる豚を飼うとは",
+      "吾ひとりあなたのことをおっちゃんと呼ぶことになり　話が変わる",
+      "声さらう　おっちゃん、「お」にアクセント　言い直されて<ruby><rb>幸</rb><rt>さき</rt></ruby>くり返す",
+      "外側に箸とグラスを置いたまま　皮膚から聞こえる擦過の音が",
+      "アスパラの頭を左にする君の　その整えがその整いか",
+      "遠赤外の距離から瞬かず君「内臓ひきずり出しますよ」",
+      "その代わり幻をみせてあげますね、そう触れてくる脳のしわまで",
+      "たぶんしない　香らせ見つめくる君に手をのべる。「沼抜け出るつもり」",
+      "「何してる？」「家でしょぼしょぼ」「目薬を」　君の踏んだきゅぽってなに？",
+      "初香から手　持ち返ってきた勾玉よ　名を知るのみで　弥生つづける",
+      "君らしき電話の主は楽しげで　「犯人はこの中にいますか？」",
+      "「嬉しい」の声の答えをあわせたい　骨なぞりたい、くぼませたい",
+      "骨やわむペースはきっと違います　ひとりのときは困ってください",
+      "半歩ずつ空が下がって「雨はどう？」呪わす時間余ってますか",
+      "ラグあって　相づつから　肺、吐き忘れ　あの日混ざった　何滴かが",
+      "とげささる　かつての君を構成していた液で育ったとげが"
+    ];
+    const tankaElement = document.getElementById("tanka");
+    const randomIndex = Math.floor(Math.random() * tankas.length);
+    tankaElement.innerHTML = tankas[randomIndex];
+    setTimeout(() => {
+      tankaElement.style.opacity = "0.5";
+    }, 10000);
+    setTimeout(() => {
+      tankaElement.style.opacity = "0.1";
+    }, 20000);
+  </script>
+</body>
+</html>
 
