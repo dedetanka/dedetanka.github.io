@@ -107,31 +107,65 @@
       location.reload();
     }
 
-  function speakTanka() {
-    const temp = document.createElement("div");
-    temp.innerHTML = tankaElement.innerHTML;
-
-    // rubyからふりがな（rt）のみを抽出
-    temp.querySelectorAll("ruby").forEach(ruby => {
-      const rt = ruby.querySelector("rt");
-      if (rt) {
-        ruby.replaceWith(rt.textContent);
-      } else {
-        ruby.replaceWith(ruby.textContent);
-      }
-    });
-
-    let text = temp.textContent.replace(/\s+/g, ' ').trim();
+    /*
+    function speakTanka() {
+      const temp = document.createElement("div");
+      temp.innerHTML = tankaElement.innerHTML;
+  
+      // rubyからふりがな（rt）のみを抽出
+      temp.querySelectorAll("ruby").forEach(ruby => {
+        const rt = ruby.querySelector("rt");
+        if (rt) {
+          ruby.replaceWith(rt.textContent);
+        } else {
+          ruby.replaceWith(ruby.textContent);
+        }
+      });
+  
+      let text = temp.textContent.replace(/\s+/g, ' ').trim();
+      
+      // スペースを休符に変える（句点にすることで間ができる）
+      text = text.replace(/ /g, '……'); // ←「、」の方が自然な間になります
+  
+      const utter = new SpeechSynthesisUtterance(text);
+      utter.lang = 'ja-JP';
+      utter.rate = 0.6; // ← ここで速度調整（0.1〜10.0）
+      speechSynthesis.cancel();
+      speechSynthesis.speak(utter);
+    }
+    */
+    function speakTankaWithFallback(voiceName = "Kyoko") {
+      const voices = speechSynthesis.getVoices();
+      const selectedVoice = voices.find(v => v.name === voiceName);
     
-    // スペースを休符に変える（句点にすることで間ができる）
-    text = text.replace(/ /g, '……'); // ←「、」の方が自然な間になります
-
-    const utter = new SpeechSynthesisUtterance(text);
-    utter.lang = 'ja-JP';
-    utter.rate = 0.6; // ← ここで速度調整（0.1〜10.0）
-    speechSynthesis.cancel();
-    speechSynthesis.speak(utter);
-  }
+      const temp = document.createElement("div");
+      temp.innerHTML = tankaElement.innerHTML;
+    
+      // ふりがなのみに変換
+      temp.querySelectorAll("ruby").forEach(ruby => {
+        const rt = ruby.querySelector("rt");
+        if (rt) {
+          ruby.replaceWith(rt.textContent);
+        } else {
+          ruby.replaceWith(ruby.textContent);
+        }
+      });
+    
+      let text = temp.textContent.replace(/\s+/g, ' ').trim();
+      text = text.replace(/ /g, '……'); // スペースを長めの休符に
+    
+      const utter = new SpeechSynthesisUtterance(text);
+      utter.lang = 'ja-JP';
+      utter.rate = 0.8;
+    
+      // 見つかれば指定、なければ無指定（＝ブラウザのデフォルト音声）
+      if (selectedVoice) {
+        utter.voice = selectedVoice;
+      }
+    
+      speechSynthesis.cancel();
+      speechSynthesis.speak(utter);
+    }
   </script>
 </body>
 </html>
