@@ -35,7 +35,6 @@
       text-align: center;
       letter-spacing: 0.1em;
       margin-bottom: 120px;
-      transition: opacity 2s ease;
     }
     ruby {
       ruby-position: over;
@@ -87,7 +86,6 @@
       `ラグあって　<ruby><rb>相</rb><rt>あい</rt></ruby>づつから　<ruby><rb>肺</rb><rt>はい</rt></ruby>、<ruby><rb>吐</rb><rt>は</rt></ruby>き忘れ　あの日<ruby><rb>混</rb><rt>ま</rt></ruby>ざった　<ruby><rb>何滴</rb><rt>なんてき</rt></ruby>かが`
     ];
 
-    // フィッシャー–イェーツでシャッフル
     function shuffle(array) {
       for (let i = array.length - 1; i > 0; i--) {
         const j = Math.floor(Math.random() * (i + 1));
@@ -102,13 +100,6 @@
 
     function showTanka() {
       tankaElement.innerHTML = shuffled[currentIndex];
-      tankaElement.style.opacity = "1";
-      setTimeout(() => {
-        tankaElement.style.opacity = "0.5";
-      }, 10000);
-      setTimeout(() => {
-        tankaElement.style.opacity = "0.1";
-      }, 17000);
     }
 
     function nextTanka() {
