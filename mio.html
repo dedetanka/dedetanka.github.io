@@ -66,7 +66,7 @@
   </div>
 
   <div class="next-link">
-    <a href="#" onclick="scrollToTopAndReload()">next</a>
+    <a href="#" onclick="nextTanka()">next</a>
   </div>
 
   <script>
@@ -80,9 +80,14 @@
       `たぶんしない　<ruby><rb>香</rb><rt>かお</rt></ruby>らせ見つめくる<ruby><rb>君</rb><rt>きみ</rt></ruby>に手をのべる。「<ruby><rb>沼</rb><rt>ぬま</rt></ruby>、<ruby><rb>抜</rb><rt>ぬ</rt></ruby>け出るつもり」`,
       `「何してる？」「家でしょぼしょぼ」「目薬を」　<ruby><rb>君</rb><rt>きみ</rt></ruby>の<ruby><rb>踏</rb><rt>ふ</rt></ruby>んだきゅぽってなに？`,
       `<ruby><rb>初香</rb><rt>しょか</rt></ruby>から手　持ち返ってきた<ruby><rb>勾玉</rb><rt>まがたま</rt></ruby>よ　名を知るのみで　<ruby><rb>弥生</rb><rt>やよい</rt></ruby>つづける`,
-      `<ruby><rb>君</rb><rt>きみ</rt></ruby>らしき電話の主は楽しげで　「犯人はこの中にいますか？」`
+      `<ruby><rb>君</rb><rt>きみ</rt></ruby>らしき電話の主は楽しげで　「犯人はこの中にいますか？」`,
+      `「<ruby><rb>嬉</rb><rt>うれ</rt></ruby>しい」の声の答えをあわせたい　骨なぞりたい、くぼませたい`,
+      `<ruby><rb>骨</rb><rt>ほね</rt></ruby>やわむペースはきっと違います　ひとりのときは<ruby><rb>困</rb><rt>こま</rt></ruby>ってください`,
+      `<ruby><rb>半歩</rb><rt>はんぽ</rt></ruby>ずつ空が下がって「雨はどう？」<ruby><rb>呪</rb><rt>のろ</rt></ruby>わす時間<ruby><rb>余</rb><rt>あま</rt></ruby>ってますか`,
+      `ラグあって　<ruby><rb>相</rb><rt>あい</rt></ruby>づつから　<ruby><rb>肺</rb><rt>はい</rt></ruby>、<ruby><rb>吐</rb><rt>は</rt></ruby>き忘れ　あの日<ruby><rb>混</rb><rt>ま</rt></ruby>ざった　<ruby><rb>何滴</rb><rt>なんてき</rt></ruby>かが`
     ];
 
+    // フィッシャー–イェーツでシャッフル
     function shuffle(array) {
       for (let i = array.length - 1; i > 0; i--) {
         const j = Math.floor(Math.random() * (i + 1));
@@ -91,32 +96,30 @@
       return array;
     }
 
-    let order = JSON.parse(localStorage.getItem("tankaOrder"));
-    let index = parseInt(localStorage.getItem("tankaIndex") || "0");
-
-    if (!order || index >= tankas.length) {
-      order = shuffle([...Array(tankas.length).keys()]);
-      index = 0;
-    }
-
+    let shuffled = shuffle([...tankas]);
+    let currentIndex = 0;
     const tankaElement = document.getElementById("tanka");
-    tankaElement.innerHTML = tankas[order[index]];
 
-    localStorage.setItem("tankaOrder", JSON.stringify(order));
-    localStorage.setItem("tankaIndex", (index + 1).toString());
-
-    setTimeout(() => {
-      tankaElement.style.opacity = "0.5";
-    }, 10000);
-    setTimeout(() => {
-      tankaElement.style.opacity = "0.1";
-    }, 17000);
-
-    function scrollToTopAndReload() {
-      document.body.scrollTop = 0;
-      document.documentElement.scrollTop = 0;
-      location.reload();
+    function showTanka() {
+      tankaElement.innerHTML = shuffled[currentIndex];
+      tankaElement.style.opacity = "1";
+      setTimeout(() => {
+        tankaElement.style.opacity = "0.5";
+      }, 10000);
+      setTimeout(() => {
+        tankaElement.style.opacity = "0.1";
+      }, 17000);
     }
+
+    function nextTanka() {
+      currentIndex = (currentIndex + 1) % shuffled.length;
+      if (currentIndex === 0) shuffled = shuffle([...tankas]);
+      showTanka();
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+
+    // 初回表示
+    showTanka();
   </script>
 </body>
 </html>
