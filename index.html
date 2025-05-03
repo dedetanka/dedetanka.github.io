@@ -5,23 +5,27 @@
   <title>one reading my TANKA</title>
   <style>
     body {
+      margin: 0;
+      height: 100vh;
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      height: 100vh;
-      margin: 0;
       font-family: sans-serif;
+      background-color: #ffffff;
     }
+
     h1 {
-      font-size: 2em;
+      font-size: 2.5em;
       margin-bottom: 20px;
     }
+
     #image {
       opacity: 0;
       transition: opacity 1.5s ease-in-out;
       max-width: 80%;
     }
+
     .visible {
       opacity: 1;
     }
@@ -29,12 +33,16 @@
 </head>
 <body>
   <h1>one reading my TANKA</h1>
-  <img id="image" src="imagetest.png" alt="TANKA image">
+  <img id="image" src="imagetest.png" alt="TANKA image" onerror="this.style.display='none'">
+
   <script>
-    setTimeout(() => {
-      document.getElementById('image').classList.add('visible');
-    }, 5000);
+    const img = document.getElementById('image');
+    // 画像要素が存在していれば5秒後に表示
+    if (img) {
+      setTimeout(() => {
+        img.classList.add('visible');
+      }, 5000);
+    }
   </script>
 </body>
 </html>
-
