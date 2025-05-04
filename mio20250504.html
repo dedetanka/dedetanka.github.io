@@ -63,7 +63,7 @@
   <div class="container">
     <div class="title">mio</div>
     <div class="tanka" id="tanka">
-      <ruby><rb>君</rb><rt>きみ</rt></ruby>の目を<ruby><rb>キノコ</rb></ruby>の<ruby><rb>軸</rb><rt>じく</rt></ruby>がきしませる　<ruby><rb>噛</rb><rt>か</rt></ruby>みしだきたく　でも白すぎる
+      君の目をキノコの<ruby><rb>軸</rb><rt>じく</rt></ruby>がきしませる　<ruby><rb>噛</rb><rt>か</rt></ruby>みしだきたく　でも白すぎる
     </div>
     <button class="read-button" onclick="speakTankaWithFallback()">読み上げ</button>
   </div>
@@ -76,7 +76,7 @@
       const temp = document.createElement("div");
       temp.innerHTML = document.getElementById("tanka").innerHTML;
 
-      // ふりがなのみに変換
+      // ruby を rt のみ（指定語句のふりがな）に置換
       temp.querySelectorAll("ruby").forEach(ruby => {
         const rt = ruby.querySelector("rt");
         if (rt) {
@@ -87,7 +87,7 @@
       });
 
       let text = temp.textContent.replace(/\s+/g, ' ').trim();
-      text = text.replace(/ /g, '……'); // スペースを長めの休符に
+      text = text.replace(/ /g, '……'); // スペースを休符に変換
 
       const utter = new SpeechSynthesisUtterance(text);
       utter.lang = 'ja-JP';
@@ -101,11 +101,9 @@
       speechSynthesis.speak(utter);
     }
 
-    // 音声リスト取得トリガー（Chrome対応）
     if (speechSynthesis.onvoiceschanged !== undefined) {
       speechSynthesis.onvoiceschanged = () => {};
     }
   </script>
 </body>
 </html>
-
