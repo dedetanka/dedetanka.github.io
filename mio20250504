@@ -1,1 +1,111 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>one reading my TANKA</title>
+  <link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho+B1&display=swap" rel="stylesheet">
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Shippori Mincho B1', serif;
+      background-color: #ffe0e0;
+      overflow-y: auto;
+    }
+    .container {
+      padding: 40px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .title {
+      font-size: 4.5em;
+      text-align: center;
+      margin-top: 100px;
+      margin-bottom: 60px;
+      color: #a00;
+    }
+    .tanka {
+      writing-mode: vertical-rl;
+      text-orientation: mixed;
+      font-size: 3.8em;
+      line-height: 2.1;
+      max-width: 90vw;
+      white-space: nowrap;
+      text-align: center;
+      letter-spacing: 0.1em;
+      margin-bottom: 120px;
+    }
+    ruby {
+      ruby-position: over;
+      line-height: 1;
+      display: inline-block;
+      white-space: nowrap;
+    }
+    rt {
+      font-size: 0.7em;
+      line-height: 1;
+      white-space: nowrap;
+    }
+    .read-button {
+      font-size: 2.5em;
+      padding: 0.3em 1em;
+      background: #a00;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      margin-bottom: 100px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="title">mio</div>
+    <div class="tanka" id="tanka">
+      <ruby><rb>君</rb><rt>きみ</rt></ruby>の目を<ruby><rb>キノコ</rb></ruby>の<ruby><rb>軸</rb><rt>じく</rt></ruby>がきしませる　<ruby><rb>噛</rb><rt>か</rt></ruby>みしだきたく　でも白すぎる
+    </div>
+    <button class="read-button" onclick="speakTankaWithFallback()">読み上げ</button>
+  </div>
+
+  <script>
+    function speakTankaWithFallback(voiceName = "Kyoko") {
+      const voices = speechSynthesis.getVoices();
+      const selectedVoice = voices.find(v => v.name === voiceName);
+
+      const temp = document.createElement("div");
+      temp.innerHTML = document.getElementById("tanka").innerHTML;
+
+      // ふりがなのみに変換
+      temp.querySelectorAll("ruby").forEach(ruby => {
+        const rt = ruby.querySelector("rt");
+        if (rt) {
+          ruby.replaceWith(rt.textContent);
+        } else {
+          ruby.replaceWith(ruby.textContent);
+        }
+      });
+
+      let text = temp.textContent.replace(/\s+/g, ' ').trim();
+      text = text.replace(/ /g, '……'); // スペースを長めの休符に
+
+      const utter = new SpeechSynthesisUtterance(text);
+      utter.lang = 'ja-JP';
+      utter.rate = 0.65;
+
+      if (selectedVoice) {
+        utter.voice = selectedVoice;
+      }
+
+      speechSynthesis.cancel();
+      speechSynthesis.speak(utter);
+    }
+
+    // 音声リスト取得トリガー（Chrome対応）
+    if (speechSynthesis.onvoiceschanged !== undefined) {
+      speechSynthesis.onvoiceschanged = () => {};
+    }
+  </script>
+</body>
+</html>
 
