@@ -72,7 +72,6 @@
   <div class="container">
     <div class="title" id="top">mio</div>
     <div class="tanka" id="tanka"></div>
-    <!-- <button class="read-button" onclick="speakTanka()">読み上げ</button> -->
     <button class="read-button" onclick="speakTankaWithFallback()">読み上げ</button>
   </div>
 
@@ -87,53 +86,24 @@
       "<ruby><rb>薬</rb><rt>くすり</rt></ruby>して<ruby><rb>呼気</rb><rt>こき</rt></ruby>が「ぐ」を<ruby><rb>戻</rb><rt>もど</rt></ruby>せたら　<ruby><rb>水</rb><rt>みず</rt></ruby>かきつまむ　あなたの<ruby><rb>力</rb><rt>ちから</rt></ruby>で",
       "<ruby><rb>来月</rb><rt>らいげつ</rt></ruby>に<ruby><rb>部屋</rb><rt>へや</rt></ruby>の<ruby><rb>明</rb><rt>あ</rt></ruby>かり<ruby><rb>切</rb><rt>き</rt></ruby>れるから　<ruby><rb>買</rb><rt>か</rt></ruby>い<ruby><rb>替</rb><rt>か</rt></ruby>えたいか<ruby><rb>考</rb><rt>かんが</rt></ruby>えておいて"
     ];
-  </script>
 
     const tankaElement = document.getElementById("tanka");
     const randomIndex = Math.floor(Math.random() * tankas.length);
     tankaElement.innerHTML = tankas[randomIndex];
 
     function scrollToTopAndReload() {
-      document.body.scrollTop = 0;
-      document.documentElement.scrollTop = 0;
-      location.reload();
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      setTimeout(() => location.reload(), 500); // スムーズスクロール後にリロード
     }
 
-    /*
-    function speakTanka() {
-      const temp = document.createElement("div");
-      temp.innerHTML = tankaElement.innerHTML;
-  
-      // rubyからふりがな（rt）のみを抽出
-      temp.querySelectorAll("ruby").forEach(ruby => {
-        const rt = ruby.querySelector("rt");
-        if (rt) {
-          ruby.replaceWith(rt.textContent);
-        } else {
-          ruby.replaceWith(ruby.textContent);
-        }
-      });
-  
-      let text = temp.textContent.replace(/\s+/g, ' ').trim();
-      
-      // スペースを休符に変える（句点にすることで間ができる）
-      text = text.replace(/ /g, '……'); // ←「、」の方が自然な間になります
-  
-      const utter = new SpeechSynthesisUtterance(text);
-      utter.lang = 'ja-JP';
-      utter.rate = 0.6; // ← ここで速度調整（0.1〜10.0）
-      speechSynthesis.cancel();
-      speechSynthesis.speak(utter);
-    }
-    */
     function speakTankaWithFallback(voiceName = "Kyoko") {
       const voices = speechSynthesis.getVoices();
       const selectedVoice = voices.find(v => v.name === voiceName);
-    
+
       const temp = document.createElement("div");
       temp.innerHTML = tankaElement.innerHTML;
-    
-      // ふりがなのみに変換
+
+      // rubyタグからふりがなのみ抽出
       temp.querySelectorAll("ruby").forEach(ruby => {
         const rt = ruby.querySelector("rt");
         if (rt) {
@@ -142,22 +112,22 @@
           ruby.replaceWith(ruby.textContent);
         }
       });
-    
+
       let text = temp.textContent.replace(/\s+/g, ' ').trim();
-      text = text.replace(/ /g, '……'); // スペースを長めの休符に
-    
+      text = text.replace(/ /g, '……');
+
       const utter = new SpeechSynthesisUtterance(text);
       utter.lang = 'ja-JP';
       utter.rate = 0.65;
-    
-      // 見つかれば指定、なければ無指定（＝ブラウザのデフォルト音声）
+
       if (selectedVoice) {
         utter.voice = selectedVoice;
       }
-    
+
       speechSynthesis.cancel();
       speechSynthesis.speak(utter);
     }
   </script>
 </body>
 </html>
+
