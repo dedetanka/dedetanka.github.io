@@ -2,7 +2,7 @@
 <html lang="ja">
 <head>
   <meta charset="UTF-8">
-  <title>one reading my TANKA</title>
+  <title>my TANKA</title>
   <link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho+B1&display=swap" rel="stylesheet">
   <style>
     html, body {
@@ -28,13 +28,13 @@
     .tanka {
       writing-mode: vertical-rl;
       text-orientation: mixed;
-      font-size: 3.8em;
+      font-size: 3.2em;
       line-height: 2.1;
       max-width: 90vw;
       white-space: nowrap;
       text-align: center;
       letter-spacing: 0.1em;
-      margin-bottom: 120px;
+      margin-bottom: 100px;
     }
     ruby {
       ruby-position: over;
@@ -47,43 +47,19 @@
       line-height: 1;
       white-space: nowrap;
     }
-    .next-link {
-      text-align: center;
-      margin-bottom: 100px;
-    }
-    .next-link a {
-      font-size: 3.8em;
-      text-decoration: none;
-      color: #a00;
-    }
   </style>
 </head>
 <body>
   <div class="container">
-    <div class="title" id="top">mio</div>
-    <div class="tanka" id="tanka"></div>
+    <div class="title">mio</div>
+
+    <div class="tanka">
+      つい<ruby><rb>添</rb><rt>そ</rt></ruby>える「エビ入ってます？」と<ruby><rb>注文</rb><rt>ちゅうもん</rt></ruby>に　アレルギーのはず、<ruby><rb>私</rb><rt>わたし</rt></ruby>ではなく
+    </div>
+
+    <div class="tanka">
+      かすむ<ruby><rb>咳</rb><rt>せき</rt></ruby>　<ruby><rb>呼気</rb><rt>こき</rt></ruby>は「ぐ」に<ruby><rb>戻</rb><rt>もど</rt></ruby>ってく　<ruby><rb>水</rb><rt>みず</rt></ruby>かきつまむ　あなたの<ruby><rb>力</rb><rt>ちから</rt></ruby>で
+    </div>
   </div>
-
-  <div class="next-link">
-    <a href="#" onclick="scrollToTopAndReload()">next</a>
-  </div>
-
-  <script>
-    const tankas = [
-      "つい<ruby><rb>添</rb><rt>そ</rt></ruby>える「エビ入ってます？」と<ruby><rb>注文</rb><rt>ちゅうもん</rt></ruby>に　アレルギーのはず、<ruby><rb>私</rb><rt>わたし</rt></ruby>ではなく",
-      "<ruby><rb>おむすび</rb></ruby>の　<ruby><rb>塩</rb><rt>しお</rt></ruby>に<ruby><rb>鼓膜</rb><rt>こまく</rt></ruby>をぐむってされ　これでも<ruby><rb>栄養</rb><rt>えいよう</rt></ruby>　ある<ruby><rb>方</rb><rt>ほう</rt></ruby>だから",
-      "<ruby><rb>薬</rb><rt>くすり</rt></ruby>して　<ruby><rb>呼気</rb><rt>こき</rt></ruby>が「ぐ」を<ruby><rb>戻</rb><rt>もど</rt></ruby>せたら　<ruby><rb>水</rb><rt>みず</rt></ruby>かきつまむ　あなたの<ruby><rb>力</rb><rt>ちから</rt></ruby>で",
-      "<ruby><rb>来月</rb><rt>らいげつ</rt></ruby>に　<ruby><rb>部屋</rb><rt>へや</rt></ruby>の<ruby><rb>明</rb><rt>あ</rt></ruby>かり<ruby><rb>切</rb><rt>き</rt></ruby>れるから　<ruby><rb>買</rb><rt>か</rt></ruby>い<ruby><rb>替</rb><rt>か</rt></ruby>えたいか　<ruby><rb>考</rb><rt>かんが</rt></ruby>えておいて"
-    ];
-
-    const tankaElement = document.getElementById("tanka");
-    const randomIndex = Math.floor(Math.random() * tankas.length);
-    tankaElement.innerHTML = tankas[randomIndex];
-
-    function scrollToTopAndReload() {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-      setTimeout(() => location.reload(), 500);
-    }
-  </script>
 </body>
 </html>
