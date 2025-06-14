@@ -10,7 +10,7 @@
       padding: 0;
       font-family: 'Shippori Mincho B1', serif;
       background-color: #ffe0e0;
-      overflow-y: auto;
+      overflow-x: auto;
     }
     .container {
       padding: 40px;
@@ -25,16 +25,21 @@
       margin-bottom: 60px;
       color: #a00;
     }
+    .tanka-row {
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      gap: 80px;
+      margin-bottom: 100px;
+    }
     .tanka {
       writing-mode: vertical-rl;
       text-orientation: mixed;
       font-size: 3.2em;
       line-height: 2.1;
-      max-width: 90vw;
       white-space: nowrap;
       text-align: center;
       letter-spacing: 0.1em;
-      margin-bottom: 100px;
     }
     ruby {
       ruby-position: over;
@@ -53,12 +58,14 @@
   <div class="container">
     <div class="title">mio</div>
 
-    <div class="tanka">
-      つい<ruby><rb>添</rb><rt>そ</rt></ruby>える「エビ入ってます？」と<ruby><rb>注文</rb><rt>ちゅうもん</rt></ruby>に　アレルギーのはず、<ruby><rb>私</rb><rt>わたし</rt></ruby>ではなく
-    </div>
+    <div class="tanka-row">
+      <div class="tanka">
+        つい<ruby><rb>添</rb><rt>そ</rt></ruby>える「エビ入ってます？」と<ruby><rb>注文</rb><rt>ちゅうもん</rt></ruby>に　アレルギーのはず、<ruby><rb>私</rb><rt>わたし</rt></ruby>ではなく
+      </div>
 
-    <div class="tanka">
-      かすむ<ruby><rb>咳</rb><rt>せき</rt></ruby>　<ruby><rb>呼気</rb><rt>こき</rt></ruby>は「ぐ」に<ruby><rb>戻</rb><rt>もど</rt></ruby>ってく　<ruby><rb>水</rb><rt>みず</rt></ruby>かきつまむ　あなたの<ruby><rb>力</rb><rt>ちから</rt></ruby>で
+      <div class="tanka">
+        かすむ<ruby><rb>咳</rb><rt>せき</rt></ruby>　<ruby><rb>呼気</rb><rt>こき</rt></ruby>は「ぐ」に<ruby><rb>戻</rb><rt>もど</rt></ruby>ってく　<ruby><rb>水</rb><rt>みず</rt></ruby>かきつまむ　あなたの<ruby><rb>力</rb><rt>ちから</rt></ruby>で
+      </div>
     </div>
   </div>
 </body>
